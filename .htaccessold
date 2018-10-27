@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteRule ^index.php?$ Paginas/home.php [NC,L]
+#paginas comuns /contato.php
+RewriteRule ^([a-z]+)\/?$ Paginas/$1.php [NC,L]
+#paginas categoria principal /brasil/1
+RewriteRule ^([a-z]+)\/([0-9]+)\/?$ Paginas/categorias.php?id=$2&categoria=$1 [NC,L]
+#paginas sub categoria /brasil/paulista/1
+RewriteRule ^([a-z]+)\/([a-z]+)\/([0-9]+)\/?$ Paginas/categorias.php?id=$3&subcategoria=$2&categoria=$s1 [NC,L]
+#detalhe do produto /brasil/paulisa/sao-paulo/1
+RewriteRule ^([a-z]+)\/([a-z]+)\/(.*)\/([0-9]+)?$ Paginas/produtos.php?id=$4&produto=$3&subcategoria=$2&categoria=$1 [NC,L]
