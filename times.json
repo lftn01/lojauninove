@@ -1,0 +1,162 @@
+{
+  "brasil":
+	{
+      "Palmeiras":{
+        "img": "img/Times/Brasil/SerieA/Palmeiras.jpeg"
+      },
+      "Flamengo":{
+        "img":"img/Times/Brasil/SerieA/Flamengo.jpg"
+      },
+
+      "Intenacional":{
+        "img":"img/Times/Brasil/SerieA/Internacional.jpg"
+      },
+
+	    "São Paulo":{
+        "img":"img/Times/Brasil/SerieA/SaoPaulo.jpeg"
+      },
+
+	    "Grêmio":{
+        "img":"img/Times/Brasil/SerieA/Gremio.jpeg"
+      },
+
+	    "Atlético Mineiro":{
+        "img":"img/Times/Brasil/SerieA/Atletico-MG.jpg"
+      },
+
+	    "Santos":{
+        "img":"img/Times/Brasil/SerieA/Santos.jpg"
+      },
+
+	    "Atlético Paranaense":{
+        "img":"img/Times/Brasil/SerieA/Atletico-PR.jpg"
+      },
+
+	    "Fluminense":{
+        "img":"img/Times/Brasil/SerieA/Fluminense.jpg"
+      },
+
+	    "Cruzeiro":{
+        "img":"img/Times/Brasil/SerieA/Cruzeiro.jpg"
+      },
+
+	    "Bahia":{
+        "img":"img/Times/Brasil/SerieA/Bahia.jpg"
+      },
+
+	    "Corinthians":{
+        "img":"img/Times/Brasil/SerieA/Corinthians.jpg"
+      },
+
+	    "Botafogo":{
+        "img":"img/Times/Brasil/SerieA/Botafogo.jpg"
+      },
+
+	    "Vasco da Gama":{
+        "img":"img/Times/Brasil/SerieA/Vasco.jpg"
+      },
+
+	    "América Mineiro":{
+        "img":"img/Times/Brasil/SerieA/America-MG.jpg"
+      },
+
+	    "Vitória":{
+        "img":"img/Times/Brasil/SerieA/Vitoria.jpg"
+      },
+
+	    "Ceará":{
+        "img":"img/Times/Brasil/SerieA/Ceara.jpg"
+      },
+
+	    "Chapecoense":{
+        "img":"img/Times/Brasil/SerieA/Chapecoense.jpg"
+      },
+
+	    "Sport Recife":{
+        "img":"img/Times/Brasil/SerieA/Sport.jpg"
+      },
+
+	    "Paraná":{
+        "img":"img/Times/Brasil/SerieA/Parana.jpg"
+      },
+
+    	"Fortaleza":{
+        "img":"img/Times/Brasil/SerieB/Fortaleza.jpg"
+      },
+	    "CSA":{
+        "img":"img/Times/Brasil/SerieB/CSA.jpg"
+      },
+
+    	"Goiás":{
+        "img":"img/Times/Brasil/SerieB/Goais.jpg"
+      },
+
+    	"Avaí":{
+        "img":"img/Times/Brasil/SerieB/Avai.jpg"
+      },
+
+    	"Vila Nova":{
+        "img":"img/Times/Brasil/SerieB/VilaNova.jpg"
+      },
+
+    	"Atlético Goianiense":{
+        "img":"img/Times/Brasil/SerieB/Atletico-GO.jpg"
+      },
+
+    	"Londrina":{
+        "img":"img/Times/Brasil/SerieB/Londrina.jpg"
+      },
+
+    	"Ponte Preta":{
+        "img":"img/Times/Brasil/SerieB/PontePreta.jpg"
+      },
+
+    	"Guarani":{
+        "img":"img/Times/Brasil/SerieB/Guarani.jpg"
+      },
+
+    	"Coritiba":{
+        "img":"img/Times/Brasil/SerieB/Coritiba.jpg"
+      },
+
+    	"Oeste":{
+        "img":"img/Times/Brasil/SerieB/Oeste.jpg"
+      },
+
+    	"Figueirense":{
+        "img":"img/Times/Brasil/SerieB/Figueirense.jpg"
+      },
+
+    	"Criciúma":{
+        "img":"img/Times/Brasil/SerieB/Criciuma.jpg"
+      },
+
+    	"São Bento":{
+        "img":"img/Times/Brasil/SerieB/SaoBento.jpg"
+      },
+
+    	"Brasil de Pelotas":{
+        "img":"img/Times/Brasil/SerieB/Brasil-RS.jpg"
+      },
+
+    	"CRB":{
+        "img":"img/Times/Brasil/SerieB/CRB.jpg"
+      },
+
+    	"Sampaio Corrêa":{
+        "img":"img/Times/Brasil/SerieB/SampaioCorrea.jpg"
+      },
+
+    	"Paysandu":{
+        "img":"img/Times/Brasil/SerieB/Paysandu.jpg"
+      },
+
+    	"Juventude":{
+        "img":"img/Times/Brasil/SerieB/Juventude.jpg"
+      },
+
+    	"Boa Esporte Clube":{
+        "img":"img/Times/Brasil/SerieB/BoaEsporte.jpg"
+      }
+  }
+}
