@@ -8,10 +8,13 @@
                 <a class="nav-link" href="/Admin/administradores/index.php">Administradores</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Admin/categorias/index.php">Categorias</a>
+                <a class="nav-link" href="/Admin/categorias/categorias_CRUD.php">Categorias</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Admin/produtos/index.php">Produtos</a>
+                <a class="nav-link" href="/Admin/sub_categorias/sub_categorias_CRUD.php">Sub categorias</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/produtos/produtos_CRUD.php">Produtos</a>
             </li>
         </ul>
     </div>
