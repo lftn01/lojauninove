@@ -21,6 +21,12 @@ class Produto
     private $quantidade;
     private $foto;
     private $status;
+    public $diretorio;
+
+    function __construct()
+    {
+        $this->diretorio = $_SERVER['DOCUMENT_ROOT']."/Uploads/";
+    }
 
     /**
      * @return mixed

@@ -14,7 +14,7 @@
                 <a class="nav-link" href="/Admin/sub_categorias/sub_categorias.php">Sub categorias</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Admin/produtos/produtos_CRUD.php">Produtos</a>
+                <a class="nav-link" href="/Admin/produtos/produtos.php">Produtos</a>
             </li>
         </ul>
     </div>

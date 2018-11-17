@@ -8,7 +8,6 @@
 
 namespace DAO;
 
-use DAO\Banco;
 use Model\Categoria;
 
 class CategoriaDAO extends Banco

@@ -8,7 +8,6 @@
 
 namespace DAO;
 
-use DAO\Banco;
 use Model\SubCategoria;
 use Model\Categoria;
 use DAO\CategoriaDAO;
@@ -19,6 +18,27 @@ class SubCategoriaDAO extends Banco
     function __construct()
     {
         parent::__construct();
+    }
+
+    /**
+     * @param $id
+     * @return SubCategoria
+     */
+    public function getSubCategoria($id){
+        $cat_dao = new CategoriaDAO();
+
+        $query = "SELECT id, nome, status, categoria_id FROM sub_categorias WHERE id = ".$id;
+        $stmt = $this->getConn()->prepare($query);
+        $stmt->execute();
+        $stmt->bind_result($id, $nome, $status, $categoria_id);
+        while($stmt->fetch()){
+            $sub_categoria = new SubCategoria();
+            $sub_categoria->setId($id);
+            $sub_categoria->setNome($nome);
+            $sub_categoria->setStatus($status);
+            $sub_categoria->setCategoria($cat_dao->getCategoria($categoria_id));
+        }
+        return $sub_categoria;
     }
 
     /**
