@@ -106,20 +106,4 @@ class Banco
     {
         $this->banco = $banco;
     }
-
-    /**
-     * @param $result
-     * @return array
-     */
-    public function fetch_assoc($query){
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        $stmt->bind_result($id,$nome);
-
-        $resultado_final = [];
-        while($stmt->fetch()){
-            //$resultado_final[] = $data;
-        }
-        return $resultado_final;
-    }
 }
