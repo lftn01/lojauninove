@@ -24,6 +24,7 @@ class ProdutoController
         $this->dao = new ProdutoDAO();
         $this->cat_dao = new SubCategoriaDAO();
         $this->controller = new ControllerController();
+        $this->controller->loginAdmin();
     }
 
     /**

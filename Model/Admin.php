@@ -15,6 +15,7 @@ class Admin
     private $nome;
     private $email;
     private $senha;
+    private $status;
 
     /**
      * @return mixed
@@ -77,7 +78,23 @@ class Admin
      */
     public function setSenha($senha)
     {
-        $this->senha = $senha;
+        $this->senha = md5($senha);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 
 

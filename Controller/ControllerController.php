@@ -11,8 +11,7 @@ namespace Controller;
 
 class ControllerController
 {
-    function __construct()
-    {
+    function __construct(){
         session_start();
     }
 
@@ -21,5 +20,11 @@ class ControllerController
      */
     public function redirect($url){
         header('Location: '.$url);
+    }
+
+    public function loginAdmin(){
+        if(empty($_SESSION['admin']) && $_SERVER['REQUEST_URI'] != "/Admin/login.php"){
+            $this->redirect("/Admin/login.php");
+        }
     }
 }

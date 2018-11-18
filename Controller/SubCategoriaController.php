@@ -8,8 +8,6 @@
 
 namespace Controller;
 
-use Controller\ControllerController;
-
 use DAO\SubCategoriaDAO;
 use DAO\CategoriaDAO;
 use Model\SubCategoria;
@@ -25,6 +23,7 @@ class SubCategoriaController
         $this->dao = new SubCategoriaDAO();
         $this->cat_dao = new CategoriaDAO();
         $this->controller = new ControllerController();
+        $this->controller->loginAdmin();
     }
 
     /**

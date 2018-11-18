@@ -8,8 +8,6 @@
 
 namespace Controller;
 
-use Controller\ControllerController;
-
 use DAO\CategoriaDAO;
 use Model\Categoria;
 
@@ -23,6 +21,7 @@ class CategoriaController
         require_once "../../autoload.php";
         $this->dao = new CategoriaDAO();
         $this->controller = new ControllerController();
+        $this->controller->loginAdmin();
     }
 
     /**
