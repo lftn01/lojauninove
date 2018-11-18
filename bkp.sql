@@ -1,105 +1,79 @@
--- MySQL dump 10.13  Distrib 5.7.23, for Win64 (x86_64)
---
--- Host: localhost    Database: lojauninove
--- ------------------------------------------------------
--- Server version	5.7.23-log
+/*
+SQLyog Professional v12.4.1 (64 bit)
+MySQL - 5.7.23-log : Database - lojauninove
+*********************************************************************
+*/
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
+
+/*!40101 SET SQL_MODE=''*/;
+
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`lojauninove` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
---
--- Table structure for table `administradores`
---
+USE `lojauninove`;
+
+/*Table structure for table `administradores` */
 
 DROP TABLE IF EXISTS `administradores`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `administradores` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `senha` varchar(255) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `administradores`
---
+/*Data for the table `administradores` */
 
-LOCK TABLES `administradores` WRITE;
-/*!40000 ALTER TABLE `administradores` DISABLE KEYS */;
-/*!40000 ALTER TABLE `administradores` ENABLE KEYS */;
-UNLOCK TABLES;
+insert  into `administradores`(`id`,`nome`,`email`,`senha`,`status`) values 
+(1,'Felipe','luiz.felipe.neves3@gmail.com','c62d929e7b7e7b6165923a5dfc60cb56',1);
 
---
--- Table structure for table `carrinhos`
---
+/*Table structure for table `carrinhos` */
 
 DROP TABLE IF EXISTS `carrinhos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `carrinhos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuario_id` int(11) DEFAULT NULL,
   `produto_id` int(11) DEFAULT NULL,
+  `quantidade` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_usuario` (`usuario_id`),
   KEY `fk_produtos` (`produto_id`),
   CONSTRAINT `fk_produtos` FOREIGN KEY (`produto_id`) REFERENCES `produtos` (`id`),
   CONSTRAINT `fk_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `carrinhos`
---
+/*Data for the table `carrinhos` */
 
-LOCK TABLES `carrinhos` WRITE;
-/*!40000 ALTER TABLE `carrinhos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `carrinhos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `categorias`
---
+/*Table structure for table `categorias` */
 
 DROP TABLE IF EXISTS `categorias`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `categorias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `categorias`
---
+/*Data for the table `categorias` */
 
-LOCK TABLES `categorias` WRITE;
-/*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` VALUES (1,'brazils',1),(2,'inglaterra',1);
-/*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
-UNLOCK TABLES;
+insert  into `categorias`(`id`,`nome`,`status`) values 
+(1,'Brasil',1),
+(2,'Inglaterra',0),
+(5,'JapÃ£o',0);
 
---
--- Table structure for table `pedido_itens`
---
+/*Table structure for table `pedido_itens` */
 
 DROP TABLE IF EXISTS `pedido_itens`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `pedido_itens` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pedido_id` int(11) DEFAULT NULL,
@@ -112,24 +86,13 @@ CREATE TABLE `pedido_itens` (
   CONSTRAINT `fk_pedido_itens` FOREIGN KEY (`produto_id`) REFERENCES `produtos` (`id`),
   CONSTRAINT `fk_pedidos` FOREIGN KEY (`pedido_id`) REFERENCES `pedidos` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `pedido_itens`
---
+/*Data for the table `pedido_itens` */
 
-LOCK TABLES `pedido_itens` WRITE;
-/*!40000 ALTER TABLE `pedido_itens` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pedido_itens` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `pedidos`
---
+/*Table structure for table `pedidos` */
 
 DROP TABLE IF EXISTS `pedidos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `pedidos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuario_id` int(11) DEFAULT NULL,
@@ -140,24 +103,13 @@ CREATE TABLE `pedidos` (
   KEY `fk_usuario_pedido` (`usuario_id`),
   CONSTRAINT `fk_usuario_pedido` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `pedidos`
---
+/*Data for the table `pedidos` */
 
-LOCK TABLES `pedidos` WRITE;
-/*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `produtos`
---
+/*Table structure for table `produtos` */
 
 DROP TABLE IF EXISTS `produtos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `produtos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sub_categoria_id` int(11) DEFAULT NULL,
@@ -170,26 +122,17 @@ CREATE TABLE `produtos` (
   PRIMARY KEY (`id`),
   KEY `fk_produto_sub_categoria` (`sub_categoria_id`),
   CONSTRAINT `fk_produto_sub_categoria` FOREIGN KEY (`sub_categoria_id`) REFERENCES `sub_categorias` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `produtos`
---
+/*Data for the table `produtos` */
 
-LOCK TABLES `produtos` WRITE;
-/*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
-INSERT INTO `produtos` VALUES (7,1,'asdasd','asdsad',12312,12312,'1541032215.png',1);
-/*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
-UNLOCK TABLES;
+insert  into `produtos`(`id`,`sub_categoria_id`,`nome`,`descricao`,`preco`,`quantidade`,`foto`,`status`) values 
+(9,2,'SÃ£o Paulo','DescriÃ§Ã£o 2',10,10,'1542488965.png',0);
 
---
--- Table structure for table `sub_categorias`
---
+/*Table structure for table `sub_categorias` */
 
 DROP TABLE IF EXISTS `sub_categorias`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `sub_categorias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `categoria_id` int(11) DEFAULT NULL,
@@ -198,26 +141,18 @@ CREATE TABLE `sub_categorias` (
   PRIMARY KEY (`id`),
   KEY `fk_subcategoria_categoria` (`categoria_id`),
   CONSTRAINT `fk_subcategoria_categoria` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `sub_categorias`
---
+/*Data for the table `sub_categorias` */
 
-LOCK TABLES `sub_categorias` WRITE;
-/*!40000 ALTER TABLE `sub_categorias` DISABLE KEYS */;
-INSERT INTO `sub_categorias` VALUES (1,1,'brasileirÃ£o',1),(2,2,'ingles',1);
-/*!40000 ALTER TABLE `sub_categorias` ENABLE KEYS */;
-UNLOCK TABLES;
+insert  into `sub_categorias`(`id`,`categoria_id`,`nome`,`status`) values 
+(1,1,'brasileirÃ£o',1),
+(2,2,'ingles',1);
 
---
--- Table structure for table `usuarios`
---
+/*Table structure for table `usuarios` */
 
 DROP TABLE IF EXISTS `usuarios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) DEFAULT NULL,
@@ -233,24 +168,10 @@ CREATE TABLE `usuarios` (
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `usuarios`
---
-
-LOCK TABLES `usuarios` WRITE;
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+/*Data for the table `usuarios` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2018-10-31 21:47:34
