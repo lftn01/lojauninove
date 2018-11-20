@@ -8,13 +8,19 @@
                 <a class="nav-link" href="/Admin/administradores/index.php">Administradores</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/Admin/usuarios/index.php">Usuários</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/Admin/categorias/categorias.php">Categorias</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Admin/sub_categorias/sub_categorias.php">Sub categorias</a>
+                <a class="nav-link" href="/Admin/sub_categorias/sub_categorias.php">Sub Categorias</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/Admin/produtos/produtos.php">Produtos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/pedidos/index.php">Pedidos</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">

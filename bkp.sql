@@ -85,9 +85,12 @@ CREATE TABLE `pedido_itens` (
   KEY `fk_pedido_itens` (`produto_id`),
   CONSTRAINT `fk_pedido_itens` FOREIGN KEY (`produto_id`) REFERENCES `produtos` (`id`),
   CONSTRAINT `fk_pedidos` FOREIGN KEY (`pedido_id`) REFERENCES `pedidos` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `pedido_itens` */
+
+insert  into `pedido_itens`(`id`,`pedido_id`,`produto_id`,`preco`,`quantidade`) values 
+(1,1,9,10,5);
 
 /*Table structure for table `pedidos` */
 
@@ -97,14 +100,17 @@ CREATE TABLE `pedidos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuario_id` int(11) DEFAULT NULL,
   `preco_frete` float DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
+  `status` char(1) DEFAULT 'A' COMMENT 'A=Aberto / P=Pago / R=Recusado',
   `data_cadastro` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_usuario_pedido` (`usuario_id`),
   CONSTRAINT `fk_usuario_pedido` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `pedidos` */
+
+insert  into `pedidos`(`id`,`usuario_id`,`preco_frete`,`status`,`data_cadastro`) values 
+(1,1,10,'P','2018-11-20');
 
 /*Table structure for table `produtos` */
 
@@ -167,9 +173,12 @@ CREATE TABLE `usuarios` (
   `numero` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `usuarios` */
+
+insert  into `usuarios`(`id`,`nome`,`email`,`cpf`,`senha`,`cep`,`logradouro`,`bairro`,`estado`,`cidade`,`numero`,`status`) values 
+(1,'Luiz Felipe Tavares das Neves','luiz.felipe.neves3@gmail.com','37400970860',NULL,'07995000','Avenida Virginia','Jardim Virginia','SP','Francisco Morato',234,1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

@@ -22,7 +22,7 @@ $sub_categorias = $busca_banco['sub_categorias'];
 
 include "../../Templates/header-admin.php";
 ?>
-<div class="container">
+<div class="container-fluid">
     <h1 class="h1">Produtos</h1>
     <div class="table-responsive">
         <table class='table  table-dark table-striped'>

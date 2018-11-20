@@ -53,9 +53,12 @@ class Pedido
     /**
      * @return mixed
      */
-    public function getPrecoFrete()
+    public function getPrecoFrete($format=null)
     {
-        return $this->preco_frete;
+        if(empty($format))
+            return $this->preco_frete;
+        else
+            return "R$&nbsp;".number_format($this->preco_frete, 2, ",", ".");
     }
 
     /**
@@ -69,9 +72,23 @@ class Pedido
     /**
      * @return mixed
      */
-    public function getStatus()
+    public function getStatus($format=null)
     {
-        return $this->status;
+        if(empty($format))
+            return $this->status;
+        else{
+            switch ($this->status){
+                case "P":
+                    return "Pago";
+                    break;
+                case "R":
+                    return "Recusado";
+                    break;
+                default:
+                    return "Aberto";
+                    break;
+            }
+        }
     }
 
     /**
@@ -85,9 +102,14 @@ class Pedido
     /**
      * @return mixed
      */
-    public function getDataCadastro()
+    public function getDataCadastro($format=null)
     {
-        return $this->data_cadastro;
+        if(empty($format))
+            return $this->data_cadastro;
+        else{
+            $data = new \DateTime($this->data_cadastro);
+            return $data->format($format);
+        }
     }
 
     /**

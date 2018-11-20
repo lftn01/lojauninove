@@ -45,7 +45,7 @@ class Usuario
      */
     public function getNome()
     {
-        return $this->nome;
+        return str_replace(" ", "&nbsp;", $this->nome);
     }
 
     /**

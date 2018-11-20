@@ -17,7 +17,7 @@ if (isset($_POST['add'])) {
 
 include "../../Templates/header-admin.php";
 ?>
-<div class="container">
+<div class="container-fluid">
     <h1 class="h1">Categorias</h1>
     <table class='table table-dark table-striped'>
         <thead class='thead-dark'>

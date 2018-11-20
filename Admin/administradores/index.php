@@ -17,7 +17,7 @@ if(isset($_POST['remover'])){
 $admins = $controller->admin_index();
 
 include "../../Templates/header-admin.php"?>
-<div class="container">
+<div class="container-fluid">
     <h1>Administradores</h1>
     <table class="table table-striped table-bordered">
         <thead>
