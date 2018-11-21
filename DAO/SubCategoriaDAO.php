@@ -64,6 +64,29 @@ class SubCategoriaDAO extends Banco
     }
 
     /**
+     * @param $categoria_id
+     * @return array
+     */
+    public function getSubCategoriasByCategoria($categoria_id){
+        $cat_dao = new CategoriaDAO();
+
+        $query = "SELECT id, nome, status, categoria_id FROM sub_categorias WHERE categoria_id = ".$categoria_id;
+        $stmt = $this->getConn()->prepare($query);
+        $stmt->execute();
+        $stmt->bind_result($id, $nome, $status, $categoria_id);
+        $sub_categorias = [];
+        while($stmt->fetch()){
+            $sub_categoria = new SubCategoria();
+            $sub_categoria->setId($id);
+            $sub_categoria->setNome($nome);
+            $sub_categoria->setStatus($status);
+            $sub_categoria->setCategoria($cat_dao->getCategoria($categoria_id));
+            $sub_categorias[] = $sub_categoria;
+        }
+        return $sub_categorias;
+    }
+
+    /**
      * @param SubCategoria $categoria
      * @return bool
      */

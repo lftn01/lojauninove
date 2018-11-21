@@ -128,12 +128,14 @@ CREATE TABLE `produtos` (
   PRIMARY KEY (`id`),
   KEY `fk_produto_sub_categoria` (`sub_categoria_id`),
   CONSTRAINT `fk_produto_sub_categoria` FOREIGN KEY (`sub_categoria_id`) REFERENCES `sub_categorias` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 /*Data for the table `produtos` */
 
 insert  into `produtos`(`id`,`sub_categoria_id`,`nome`,`descricao`,`preco`,`quantidade`,`foto`,`status`) values 
-(9,2,'SÃ£o Paulo','DescriÃ§Ã£o 2',10,10,'1542488965.png',0);
+(9,2,'SÃ£o Paulo','DescriÃ§Ã£o 2',10,10,'1542488965.png',0),
+(10,2,'Produto 2','DescriÃ§Ã£o 2',550,15,'1542759392.png',1),
+(11,2,'Produto 3','DescriÃ§Ã£o 3',698,20,'1542759418.png',1);
 
 /*Table structure for table `sub_categorias` */
 

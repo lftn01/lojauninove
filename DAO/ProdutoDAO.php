@@ -15,6 +15,29 @@ class ProdutoDAO extends Banco{
         parent::__construct();
     }
 
+    public function getProdutosByCategoria($categoria_id){
+        $query = "SELECT * FROM produtos WHERE sub_categoria_id = ".$categoria_id;
+        $stmt = $this->getConn()->prepare($query);
+        $stmt->execute();
+        $stmt->bind_result($id, $sub_categoria_id, $nome, $descricao, $preco, $quantidade, $foto, $status);
+        $produtos = [];
+        $sub_dao = new SubCategoriaDAO();
+        while($stmt->fetch()){
+            $produto = new Produto();
+            $produto->setId($id);
+            $produto->setSubCategoria($sub_dao->getSubCategoria($sub_categoria_id));
+            $produto->setNome($nome);
+            $produto->setDescricao($descricao);
+            $produto->setPreco($preco);
+            $produto->setQuantidade($quantidade);
+            $produto->setFoto($foto);
+            $produto->setStatus($status);
+            $produtos[] = $produto;
+        }
+
+        return $produtos;
+    }
+
     /**
      * @return Produto
      */

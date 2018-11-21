@@ -95,9 +95,12 @@ class Produto
     /**
      * @return mixed
      */
-    public function getPreco()
+    public function getPreco($format=null)
     {
-        return $this->preco;
+        if(empty($format))
+            return $this->preco;
+        else
+            return "R$&nbsp;".number_format($this->preco, 2, ".", ",");
     }
 
     /**
