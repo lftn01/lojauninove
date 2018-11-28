@@ -27,12 +27,13 @@ CREATE TABLE `administradores` (
   `senha` varchar(255) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `administradores` */
 
 insert  into `administradores`(`id`,`nome`,`email`,`senha`,`status`) values 
-(1,'Felipe','luiz.felipe.neves3@gmail.com','c62d929e7b7e7b6165923a5dfc60cb56',1);
+(1,'Felipe','luiz.felipe.neves3@gmail.com','c62d929e7b7e7b6165923a5dfc60cb56',1),
+(3,'felipe 2','teste@teste.com.br','c4ca4238a0b923820dcc509a6f75849b',0);
 
 /*Table structure for table `carrinhos` */
 
@@ -48,9 +49,13 @@ CREATE TABLE `carrinhos` (
   KEY `fk_produtos` (`produto_id`),
   CONSTRAINT `fk_produtos` FOREIGN KEY (`produto_id`) REFERENCES `produtos` (`id`),
   CONSTRAINT `fk_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `carrinhos` */
+
+insert  into `carrinhos`(`id`,`usuario_id`,`produto_id`,`quantidade`) values 
+(2,2,11,5),
+(5,2,9,3);
 
 /*Table structure for table `categorias` */
 
@@ -125,6 +130,7 @@ CREATE TABLE `produtos` (
   `quantidade` int(11) DEFAULT NULL,
   `foto` varchar(255) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
+  `oferta` int(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `fk_produto_sub_categoria` (`sub_categoria_id`),
   CONSTRAINT `fk_produto_sub_categoria` FOREIGN KEY (`sub_categoria_id`) REFERENCES `sub_categorias` (`id`)
@@ -132,10 +138,10 @@ CREATE TABLE `produtos` (
 
 /*Data for the table `produtos` */
 
-insert  into `produtos`(`id`,`sub_categoria_id`,`nome`,`descricao`,`preco`,`quantidade`,`foto`,`status`) values 
-(9,2,'SÃ£o Paulo','DescriÃ§Ã£o 2',10,10,'1542488965.png',0),
-(10,2,'Produto 2','DescriÃ§Ã£o 2',550,15,'1542759392.png',1),
-(11,2,'Produto 3','DescriÃ§Ã£o 3',698,20,'1542759418.png',1);
+insert  into `produtos`(`id`,`sub_categoria_id`,`nome`,`descricao`,`preco`,`quantidade`,`foto`,`status`,`oferta`) values 
+(9,2,'SÃ£o Paulo','DescriÃ§Ã£o 2',10,10,'1542488965.png',0,0),
+(10,2,'Produto 2','DescriÃ§Ã£o 2',550,15,'1542759392.png',1,1),
+(11,2,'Produto 3','DescriÃ§Ã£o 3',698,20,'1542759418.png',1,1);
 
 /*Table structure for table `sub_categorias` */
 
@@ -149,7 +155,7 @@ CREATE TABLE `sub_categorias` (
   PRIMARY KEY (`id`),
   KEY `fk_subcategoria_categoria` (`categoria_id`),
   CONSTRAINT `fk_subcategoria_categoria` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `sub_categorias` */
 
@@ -175,12 +181,13 @@ CREATE TABLE `usuarios` (
   `numero` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `usuarios` */
 
 insert  into `usuarios`(`id`,`nome`,`email`,`cpf`,`senha`,`cep`,`logradouro`,`bairro`,`estado`,`cidade`,`numero`,`status`) values 
-(1,'Luiz Felipe Tavares das Neves','luiz.felipe.neves3@gmail.com','37400970860',NULL,'07995000','Avenida Virginia','Jardim Virginia','SP','Francisco Morato',234,1);
+(1,'Luiz Felipe Tavares das Neves','luiz.felipe.neves3@gmail.com','37400970860',NULL,'07995000','Avenida Virginia','Jardim Virginia','SP','Francisco Morato',234,1),
+(2,'Luiz','luiz-felip-e@hotmail.com','545646466546','c62d929e7b7e7b6165923a5dfc60cb56','07995000','Avenida VirgÃ­nia','','SP','Francisco Morato',294,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
