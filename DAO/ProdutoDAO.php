@@ -19,7 +19,7 @@ class ProdutoDAO extends Banco{
         $query = "SELECT * FROM produtos WHERE sub_categoria_id = ".$categoria_id;
         $stmt = $this->getConn()->prepare($query);
         $stmt->execute();
-        $stmt->bind_result($id, $sub_categoria_id, $nome, $descricao, $preco, $quantidade, $foto, $status);
+        $stmt->bind_result($id, $sub_categoria_id, $nome, $descricao, $preco, $quantidade, $foto, $status, $oferta);
         $produtos = [];
         $sub_dao = new SubCategoriaDAO();
         while($stmt->fetch()){
@@ -32,6 +32,7 @@ class ProdutoDAO extends Banco{
             $produto->setQuantidade($quantidade);
             $produto->setFoto($foto);
             $produto->setStatus($status);
+            $produto->setOferta($oferta);
             $produtos[] = $produto;
         }
 
@@ -39,13 +40,14 @@ class ProdutoDAO extends Banco{
     }
 
     /**
-     * @return Produto
+     * @param null $oferta
+     * @return array
      */
-    public function getProdutos(){
-        $query = "SELECT * FROM produtos";
+    public function getProdutos($oferta = null){
+        $query = "SELECT * FROM produtos".( $oferta ? " WHERE oferta = 1" : "");
         $stmt = $this->getConn()->prepare($query);
         $stmt->execute();
-        $stmt->bind_result($id, $sub_categoria_id, $nome, $descricao, $preco, $quantidade, $foto, $status);
+        $stmt->bind_result($id, $sub_categoria_id, $nome, $descricao, $preco, $quantidade, $foto, $status, $oferta);
         $produtos = [];
         $sub_dao = new SubCategoriaDAO();
         while($stmt->fetch()){
@@ -58,6 +60,7 @@ class ProdutoDAO extends Banco{
             $produto->setQuantidade($quantidade);
             $produto->setFoto($foto);
             $produto->setStatus($status);
+            $produto->setOferta($oferta);
             $produtos[] = $produto;
         }
 
@@ -72,7 +75,7 @@ class ProdutoDAO extends Banco{
         $query = "SELECT * FROM produtos WHERE id = ".$id;
         $stmt = $this->getConn()->prepare($query);
         $stmt->execute();
-        $stmt->bind_result($id, $sub_categoria_id, $nome, $descricao, $preco, $quantidade, $foto, $status);
+        $stmt->bind_result($id, $sub_categoria_id, $nome, $descricao, $preco, $quantidade, $foto, $status,$oferta);
         $sub_dao = new SubCategoriaDAO();
         while($stmt->fetch()){
             $produto = new Produto();
@@ -84,6 +87,7 @@ class ProdutoDAO extends Banco{
             $produto->setQuantidade($quantidade);
             $produto->setFoto($foto);
             $produto->setStatus($status);
+            $produto->setOferta($oferta);
         }
 
         return $produto;
@@ -111,7 +115,7 @@ class ProdutoDAO extends Banco{
      */
     public function updateProduto(Produto $produto){
         try{
-            $query = "UPDATE produtos SET sub_categoria_id = '".$produto->getSubCategoria()->getId()."', nome = '".$produto->getNome()."', descricao = '".$produto->getDescricao()."', preco = '".$produto->getPreco()."', quantidade = '".$produto->getQuantidade()."', foto = '".$produto->getFoto()."', status = '".$produto->getStatus()."' WHERE id = ".$produto->getId();
+            $query = "UPDATE produtos SET sub_categoria_id = '".$produto->getSubCategoria()->getId()."', nome = '".$produto->getNome()."', descricao = '".$produto->getDescricao()."', preco = '".$produto->getPreco()."', quantidade = '".$produto->getQuantidade()."', foto = '".$produto->getFoto()."', status = '".$produto->getStatus().", oferta = '".$produto->getOferta()."' WHERE id = ".$produto->getId();
             $stmt  = $this->getConn()->prepare($query);
             $stmt->execute();
             return true;

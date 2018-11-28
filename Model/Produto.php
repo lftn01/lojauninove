@@ -21,6 +21,7 @@ class Produto
     private $quantidade;
     private $foto;
     private $status;
+    private $oferta;
     public $diretorio;
 
     function __construct()
@@ -100,7 +101,7 @@ class Produto
         if(empty($format))
             return $this->preco;
         else
-            return "R$&nbsp;".number_format($this->preco, 2, ".", ",");
+            return "R$&nbsp;".number_format($this->preco, 2, ",", ".");
     }
 
     /**
@@ -158,5 +159,23 @@ class Produto
     {
         $this->status = $status;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getOferta()
+    {
+        return $this->oferta;
+    }
+
+    /**
+     * @param mixed $oferta
+     */
+    public function setOferta($oferta)
+    {
+        $this->oferta = $oferta;
+    }
+
+
 
 }

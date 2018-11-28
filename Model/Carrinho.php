@@ -79,7 +79,7 @@ class Carrinho
      */
     public function setQuantidade($quantidade)
     {
-        $this->quantidade = $quantidade;
+        $this->quantidade = $quantidade < 1 ? 1 : $quantidade;
     }
 
 }

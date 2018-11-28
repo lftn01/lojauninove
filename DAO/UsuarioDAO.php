@@ -78,6 +78,10 @@ class UsuarioDAO extends Banco
         return $usuarios;
     }
 
+    /**
+     * @param $id
+     * @return Usuario
+     */
     public function getUsuario($id){
         $query = "SELECT * FROM ".$this->getTable()." WHERE id = ".$id;
         $stmt = $this->getConn()->prepare($query);
@@ -96,6 +100,32 @@ class UsuarioDAO extends Banco
             $usuario->setCidade($cidade);
             $usuario->setNumero($numero);
             $usuario->setStatus($status);
+        }
+        return $usuario;
+    }
+
+    /**
+     * @param Usuario $usuario
+     * @return bool|mixed
+     */
+    public function insertUsuario(Usuario $usuario){
+        try{
+            $query = "INSERT INTO ".$this->getTable()." (nome, email, senha, cpf, cep, logradouro, bairro, estado, cidade, numero) VALUES ('".$usuario->getNome()."', '".$usuario->getEmail()."', '".$usuario->getSenha()."', '".$usuario->getCpf()."', '".$usuario->getCep()."', '".$usuario->getLogradouro()."', '".$usuario->getBairro()."', '".$usuario->getEstado()."', '".$usuario->getCidade()."', '".$usuario->getNumero()."')";
+            $stmt = $this->getConn()->prepare($query);
+            $stmt->execute();
+            return $this->getConn()->insert_id;
+        }catch(\Exception $e){
+            return false;
+        }
+    }
+
+    public function getUsuarioLogin(Usuario $usuario){
+        $query = "SELECT id FROM ".$this->getTable()." WHERE email = '".$usuario->getEmail()."' AND senha = '".$usuario->getSenha()."'";
+        $stmt = $this->getConn()->prepare($query);
+        $stmt->execute();
+        $stmt->bind_result($id);
+        while ($stmt->fetch()){
+            $usuario->setId($id);
         }
         return $usuario;
     }

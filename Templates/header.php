@@ -17,4 +17,13 @@ $page = $controller->index();
     </head>
 <body>
 <div class="conteudo">
-<?php include "menu.php" ?>
+    <div class="container-fluid text-center py-5 bg-azul">
+        <div class="row">
+            <div class="col">
+                <a href="/">
+                    <img width="250" class="img-fluid" src="/img/logo-fut.jpg" alt="Fut Master - artigos esportivos" title="Fut Master - artigos esportivos">
+                </a>
+            </div>
+        </div>
+    </div>
+    <?php include "menu.php" ?>
