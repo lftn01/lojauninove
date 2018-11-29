@@ -115,7 +115,7 @@ class ProdutoDAO extends Banco{
      */
     public function updateProduto(Produto $produto){
         try{
-            $query = "UPDATE produtos SET sub_categoria_id = '".$produto->getSubCategoria()->getId()."', nome = '".$produto->getNome()."', descricao = '".$produto->getDescricao()."', preco = '".$produto->getPreco()."', quantidade = '".$produto->getQuantidade()."', foto = '".$produto->getFoto()."', status = '".$produto->getStatus().", oferta = '".$produto->getOferta()."' WHERE id = ".$produto->getId();
+            $query = "UPDATE produtos SET sub_categoria_id = '".$produto->getSubCategoria()->getId()."', nome = '".$produto->getNome()."', descricao = '".$produto->getDescricao()."', preco = '".$produto->getPreco()."', quantidade = '".$produto->getQuantidade()."', foto = '".$produto->getFoto()."', status = '".$produto->getStatus()."', oferta = '".$produto->getOferta()."' WHERE id = ".$produto->getId();
             $stmt  = $this->getConn()->prepare($query);
             $stmt->execute();
             return true;

@@ -11,7 +11,7 @@ $produtos = $controller->categorias_detalhes($_GET['id']);
                     <div class="card-body">
                         <h2><?php echo $p->getNome()?></h2>
                         <img class="img-fluid mb-3" src="/Uploads/<?php echo $p->getFoto()?>" alt="<?php echo $p->getNome()?>">
-                        <p><?php echo $p->getDescricao()?></p>
+                        <p class="descricao"><?php echo $p->getDescricao()?></p>
                         <p class="text-dark">
                             <strong><?php echo $p->getPreco(1)?></strong>
                         </p>

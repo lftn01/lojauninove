@@ -23,25 +23,35 @@ include "../../Templates/header-admin.php"?>
                 <th>Estado</th>
                 <th>Cidade</th>
                 <th>Número</th>
+                <th>Itens do pedido</th>
                 <th>Data&nbsp;Criação</th>
             </tr>
             </thead>
             <tbody>
             <?php foreach($pedidos as $p):?>
                 <tr>
-                    <th><?php echo $p->getId()?></th>
-                    <th><?php echo $p->getUsuario()->getNome()?></th>
-                    <th><?php echo $p->getUsuario()->getEmail()?></th>
-                    <th><?php echo $p->getUsuario()->getCpf()?></th>
-                    <th><?php echo $p->getPrecoFrete("F")?></th>
-                    <th><?php echo $p->getStatus("F")?></th>
-                    <th><?php echo $p->getUsuario()->getCep()?></th>
-                    <th><?php echo $p->getUsuario()->getLogradouro()?></th>
-                    <th><?php echo $p->getUsuario()->getBairro()?></th>
-                    <th><?php echo $p->getUsuario()->getEstado()?></th>
-                    <th><?php echo $p->getUsuario()->getCidade()?></th>
-                    <th><?php echo $p->getUsuario()->getNumero()?></th>
-                    <th><?php echo $p->getDataCadastro("d/m/Y")?></th>
+                    <td><?php echo $p->getId()?></td>
+                    <td><?php echo $p->getUsuario()->getNome()?></td>
+                    <td><?php echo $p->getUsuario()->getEmail()?></td>
+                    <td><?php echo $p->getUsuario()->getCpf()?></td>
+                    <td><?php echo $p->getPrecoFrete("F")?></td>
+                    <td><?php echo $p->getStatus("F")?></td>
+                    <td><?php echo $p->getUsuario()->getCep()?></td>
+                    <td><?php echo $p->getUsuario()->getLogradouro()?></td>
+                    <td><?php echo $p->getUsuario()->getBairro()?></td>
+                    <td><?php echo $p->getUsuario()->getEstado()?></td>
+                    <td><?php echo $p->getUsuario()->getCidade()?></td>
+                    <td><?php echo $p->getUsuario()->getNumero()?></td>
+                    <td>
+                        <table>
+                            <?php foreach($p->getItens() as $it):?>
+                                <tr>
+                                    <td><?php echo $it->getProduto()->getNome()?>&nbsp;-&nbsp;<?php echo $it->getQuantidade()?>&nbsp;unidades</td>
+                                </tr>
+                            <?php endforeach?>
+                        </table>
+                    </td>
+                    <td><?php echo $p->getDataCadastro("d/m/Y")?></td>
                 </tr>
             <?php endforeach;?>
             </tbody>

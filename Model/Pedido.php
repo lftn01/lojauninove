@@ -17,6 +17,7 @@ class Pedido
     private $preco_frete;
     private $status;
     private $data_cadastro;
+    private $itens;
 
     /**
      * @return mixed
@@ -119,5 +120,23 @@ class Pedido
     {
         $this->data_cadastro = $data_cadastro;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getItens()
+    {
+        return $this->itens;
+    }
+
+    /**
+     *
+     */
+    public function setItens($itens)
+    {
+        $this->itens = $itens;
+    }
+
+
 
 }

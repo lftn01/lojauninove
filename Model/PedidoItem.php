@@ -70,9 +70,20 @@ class PedidoItem
     /**
      * @return mixed
      */
-    public function getPreco()
+    public function getPreco($format = null)
     {
-        return $this->preco;
+        if(empty($format))
+            return $this->preco;
+        else
+            return "R$ ".number_format($this->preco, "2", ",", ".");
+    }
+
+    public function getTotal($format = null)
+    {
+        if(empty($format))
+            return $this->preco * $this->quantidade;
+        else
+            return "R$ ".number_format(($this->preco * $this->quantidade), "2", ",", ".");
     }
 
     /**

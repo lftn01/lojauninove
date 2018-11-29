@@ -49,13 +49,9 @@ CREATE TABLE `carrinhos` (
   KEY `fk_produtos` (`produto_id`),
   CONSTRAINT `fk_produtos` FOREIGN KEY (`produto_id`) REFERENCES `produtos` (`id`),
   CONSTRAINT `fk_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `carrinhos` */
-
-insert  into `carrinhos`(`id`,`usuario_id`,`produto_id`,`quantidade`) values 
-(2,2,11,5),
-(5,2,9,3);
 
 /*Table structure for table `categorias` */
 
@@ -72,8 +68,7 @@ CREATE TABLE `categorias` (
 
 insert  into `categorias`(`id`,`nome`,`status`) values 
 (1,'Brasil',1),
-(2,'Inglaterra',0),
-(5,'JapÃ£o',0);
+(2,'Inglaterra',0);
 
 /*Table structure for table `pedido_itens` */
 
@@ -90,12 +85,13 @@ CREATE TABLE `pedido_itens` (
   KEY `fk_pedido_itens` (`produto_id`),
   CONSTRAINT `fk_pedido_itens` FOREIGN KEY (`produto_id`) REFERENCES `produtos` (`id`),
   CONSTRAINT `fk_pedidos` FOREIGN KEY (`pedido_id`) REFERENCES `pedidos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `pedido_itens` */
 
 insert  into `pedido_itens`(`id`,`pedido_id`,`produto_id`,`preco`,`quantidade`) values 
-(1,1,9,10,5);
+(1,4,16,200,2),
+(2,4,12,150,3);
 
 /*Table structure for table `pedidos` */
 
@@ -110,12 +106,12 @@ CREATE TABLE `pedidos` (
   PRIMARY KEY (`id`),
   KEY `fk_usuario_pedido` (`usuario_id`),
   CONSTRAINT `fk_usuario_pedido` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `pedidos` */
 
 insert  into `pedidos`(`id`,`usuario_id`,`preco_frete`,`status`,`data_cadastro`) values 
-(1,1,10,'P','2018-11-20');
+(4,2,10,'P','2018-11-28');
 
 /*Table structure for table `produtos` */
 
@@ -134,14 +130,16 @@ CREATE TABLE `produtos` (
   PRIMARY KEY (`id`),
   KEY `fk_produto_sub_categoria` (`sub_categoria_id`),
   CONSTRAINT `fk_produto_sub_categoria` FOREIGN KEY (`sub_categoria_id`) REFERENCES `sub_categorias` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 /*Data for the table `produtos` */
 
 insert  into `produtos`(`id`,`sub_categoria_id`,`nome`,`descricao`,`preco`,`quantidade`,`foto`,`status`,`oferta`) values 
-(9,2,'SÃ£o Paulo','DescriÃ§Ã£o 2',10,10,'1542488965.png',0,0),
-(10,2,'Produto 2','DescriÃ§Ã£o 2',550,15,'1542759392.png',1,1),
-(11,2,'Produto 3','DescriÃ§Ã£o 3',698,20,'1542759418.png',1,1);
+(12,1,'SÃ£o Paulo','O SÃ£o Paulo Futebol Clube Ã© uma associaÃ§Ã£o esportiva brasileira fundada em 1930, tendo interrompido suas atividades em maio de 1935, e as retomado em dezembro do mesmo ano',150,10,'1543453921.png',1,1),
+(13,1,'Corinthians','O Sport Club Corinthians Paulista Ã© um clube multiesportivo brasileiro sediado na cidade de SÃ£o Paulo. Foi fundado como uma equipe de futebol no dia 1 de setembro de 1910 por um grupo de operÃ¡rios do bairro Bom Retiro.',150,10,'1543453960.png',1,0),
+(14,1,'Vasco','Club de Regatas Vasco da Gama Ã© uma entidade sÃ³cio-poliesportiva brasileira com sede na cidade do Rio de Janeiro, fundada em 21 de agosto de 1898 por um grupo de remadores.',150,10,'1543454221.png',1,1),
+(15,2,'Arsenal','O Arsenal Football Club Ã© um clube de futebol inglÃªs baseado em Holloway, na Zona Norte de Londres.',200,10,'1543454298.png',1,0),
+(16,2,'WestHam','O West Ham United Football Club Ã© um clube de futebol inglÃªs baseado na regiÃ£o leste de Londres. O West Ham Ã© um dos clubes mais tradicionais da Inglaterra e de todo Reino Unido, sendo um dos 25 que jÃ¡ ',200,10,'1543454411.png',1,1);
 
 /*Table structure for table `sub_categorias` */
 
@@ -160,8 +158,8 @@ CREATE TABLE `sub_categorias` (
 /*Data for the table `sub_categorias` */
 
 insert  into `sub_categorias`(`id`,`categoria_id`,`nome`,`status`) values 
-(1,1,'brasileirÃ£o',1),
-(2,2,'ingles',1);
+(1,1,'BrasileirÃ£o Serie A',1),
+(2,2,'Serie A',1);
 
 /*Table structure for table `usuarios` */
 

@@ -10,10 +10,14 @@ namespace Controller;
 
 use DAO\CarrinhoDAO;
 use DAO\CategoriaDAO;
+use DAO\PedidoDAO;
+use DAO\PedidoItemDAO;
 use DAO\ProdutoDAO;
 use DAO\SubCategoriaDAO;
 use DAO\UsuarioDAO;
 use Model\Carrinho;
+use Model\Pedido;
+use Model\PedidoItem;
 use Model\Usuario;
 
 class PageController
@@ -58,7 +62,7 @@ class PageController
             $_SESSION['usuario'] = $usuario->getId();
             $this->controller->redirect('/Paginas/home.php');
         }else{
-            $this->controller->redirect('/Paginas/home.php?error=1');
+            $this->controller->redirect('/Paginas/login.php?error=1');
         }
     }
 
@@ -157,5 +161,46 @@ class PageController
         $car_dao = new CarrinhoDAO();
         $car_dao->removerCarrinho($car_dao->getCarrinhosById($id));
         $this->controller->redirect("/Paginas/carrinho.php");
+    }
+
+    public function checkout(){
+        $usuario = $this->usu_dao->getUsuario($_SESSION['usuario']);
+        $car_dao = new CarrinhoDAO();
+        $ped_dao = new PedidoDAO();
+        $pedit_dao = new PedidoItemDAO();
+        $carrinhos = $car_dao->getCarrinhos($usuario);
+        $pedido = new Pedido();
+        $pedido->setUsuario($usuario);
+        $pedido->setPrecoFrete(10);
+        if ($ped_dao->insertPedido($pedido)) {
+            foreach ($carrinhos as $c) {
+                $item = new PedidoItem();
+                $item->setProduto($c->getProduto());
+                $item->setPedido($pedido);
+                $item->setPreco($c->getProduto()->getPreco());
+                $item->setQuantidade($c->getQuantidade());
+                $pedit_dao->insertItem($item);
+                $car_dao->removerCarrinho($c);
+            }
+            $this->controller->redirect("/Paginas/pedidos.php?id_pedido=" . $pedido->getId());
+        } else {
+            $this->controller->redirect("/Paginas/carrinho.php?error=1");
+        }
+    }
+
+    /**
+     * @return array
+     */
+    public function pedidos(){
+        $ped_dao = new PedidoDAO();
+        $usuario = $this->usu_dao->getUsuario($_SESSION['usuario']);
+        return [
+            'pedidos' => $ped_dao->getPedidosByUsuario($usuario)
+        ];
+    }
+
+    public function pedidos_detalhe($id){
+        $ped_dao = new PedidoDAO();
+        return $ped_dao->getPedidosById($id);
     }
 }

@@ -19,3 +19,9 @@ footer{
 .bg-azul{
     background: #314083;
 }
+.card-body img{
+    height: 250px;
+}
+.card-body .descricao{
+    height: 150px;
+}
