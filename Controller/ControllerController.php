@@ -19,7 +19,7 @@ class ControllerController
      * @param $url
      */
     public function redirect($url){
-        header('Location: '.$url);
+        echo "<script>window.location='".$url."'</script>";
     }
 
     public function loginAdmin(){

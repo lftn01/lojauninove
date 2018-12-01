@@ -1,11 +1,13 @@
 <?php
     include '../Templates/header.php';
     if(isset($_GET['menos']))
-        $carrinhos = $controller->carrinho(null, $_GET['id_carrinho']);
+        $controller->carrinho(null, $_GET['id_carrinho']);
     elseif (isset($_GET['remover']))
         $controller->remover_carrinho($_GET['id_carrinho']);
+    elseif(isset($_GET['id_produto']))
+        $controller->carrinho($_GET['id_produto']);
     else
-        $carrinhos = $controller->carrinho(@$_GET['id_produto']);
+        $carrinhos = $controller->carrinho(null, null);
 ?>
 <div class="container">
     <h1 class="my-3">Carrinho</h1>

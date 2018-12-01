@@ -116,7 +116,7 @@ class PageController
         $this->usu_dao->getUsuarioLogado();
         $car_dao = new CarrinhoDAO();
         $carrinhos = $car_dao->getCarrinhos($this->usu_dao->getUsuario($_SESSION['usuario']));
-        if($id_produto && empty($id_carrinho)){
+        if(!empty($id_produto) && empty($id_carrinho)){
             if(sizeof($carrinhos) > 0){
                 foreach ($carrinhos as $c){
                     if($c->getProduto()->getId() == $id_produto){
