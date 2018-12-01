@@ -129,4 +129,9 @@ class UsuarioDAO extends Banco
         }
         return $usuario;
     }
+
+    public function getUsuarioLogado(){
+        if(empty($_SESSION['usuario']))
+            header("Location: /Paginas/login.php");
+    }
 }

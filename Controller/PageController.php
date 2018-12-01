@@ -113,6 +113,7 @@ class PageController
      * @param $id_produto
      */
     public function carrinho($id_produto = null, $id_carrinho = null){
+        $this->usu_dao->getUsuarioLogado();
         $car_dao = new CarrinhoDAO();
         $carrinhos = $car_dao->getCarrinhos($this->usu_dao->getUsuario($_SESSION['usuario']));
         if($id_produto && empty($id_carrinho)){
@@ -192,6 +193,7 @@ class PageController
      * @return array
      */
     public function pedidos(){
+        $this->usu_dao->getUsuarioLogado();
         $ped_dao = new PedidoDAO();
         $usuario = $this->usu_dao->getUsuario($_SESSION['usuario']);
         return [
@@ -200,6 +202,7 @@ class PageController
     }
 
     public function pedidos_detalhe($id){
+        $this->usu_dao->getUsuarioLogado();
         $ped_dao = new PedidoDAO();
         return $ped_dao->getPedidosById($id);
     }
